@@ -25,6 +25,11 @@ namespace RegularExpressionTest
             string pattern = "^[a-zA-Z]+[.+_-]{0,1}[a-z]+[@][a-zA-Z]+[.][a-z]{2,3}([.][a-z]{2}){0,1}$";
             return TestPattern(pattern, input);
         }
+        public string ValidatePhoneNumber(string input)
+        {
+            string pattern = "^[0-9]{2}[ ][0-9]{10}$";
+            return TestPattern(pattern, input);
+        }
         public string TestPattern(string pattern,string name)
         {
             if (Regex.IsMatch(name, pattern))
