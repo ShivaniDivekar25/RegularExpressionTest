@@ -18,5 +18,11 @@ namespace RegularExpressionTestProgram
             string result = regex.ValidateLastName("Divekar");
             Assert.AreEqual("Valid", result);
         }
+        [Test]
+        public void ShouldReturn_Email_ValidOrNot()
+        {
+            string result = regex.ValidateEmail("abc.xyz@bridgelabz.co.in");
+            Assert.AreEqual("Valid", result);
+        }
     }
 }
