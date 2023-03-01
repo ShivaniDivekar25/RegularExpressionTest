@@ -46,6 +46,11 @@ namespace RegularExpressionTest
             string pattern = "^[A-Za-z0-9]{1,}$";
             return TestPattern(pattern, input);
         }
+        public string ValidatePasswordWithExactlyOneSpecialCharacter(string input)
+        {
+            string pattern = "^[A-Za-z0-9]{1,}(@|#|$|&){1}$";
+            return TestPattern(pattern, input);
+        }
         public string TestPattern(string pattern,string name)
         {
             if (Regex.IsMatch(name, pattern))
