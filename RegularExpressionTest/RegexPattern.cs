@@ -36,6 +36,11 @@ namespace RegularExpressionTest
             string pattern = "^[a-zA-Z]{8,}$";
             return TestPattern(pattern, input);
         }
+        public string ValidatePasswordLeastUppercase(string input)
+        {
+            string pattern = "^[A-Za-z]{1,}$";
+            return TestPattern(pattern, input);
+        }
         public string TestPattern(string pattern,string name)
         {
             if (Regex.IsMatch(name, pattern))
