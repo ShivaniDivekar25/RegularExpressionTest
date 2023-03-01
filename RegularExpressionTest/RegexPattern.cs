@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -28,6 +29,11 @@ namespace RegularExpressionTest
         public string ValidatePhoneNumber(string input)
         {
             string pattern = "^[0-9]{2}[ ][0-9]{10}$";
+            return TestPattern(pattern, input);
+        }
+        public string ValidatePassword(string input)
+        {
+            string pattern = "^[a-zA-Z]{8,}$";
             return TestPattern(pattern, input);
         }
         public string TestPattern(string pattern,string name)
