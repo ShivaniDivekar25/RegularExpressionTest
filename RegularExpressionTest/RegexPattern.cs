@@ -10,14 +10,19 @@ namespace RegularExpressionTest
 {
     public class RegexPattern
     {
-        public string ValidateFirstName(string name)
+        public string ValidateFirstName(string input)
         {
-            string firstName = "^[A-z]{1}[a-z]{2,}$";
-            return TestPattern(firstName, name);
+            string pattern = "^[A-z]{1}[a-z]{2,}$";
+            return TestPattern(pattern, input);
         }
-        public string TestPattern(string firstName,string name)
+        public string ValidateLastName(string input)
         {
-            if (Regex.IsMatch(name, firstName))
+            string pattern = "^[A-Z]{1}[a-z]{2,}$";
+            return TestPattern(pattern, input);
+        }
+        public string TestPattern(string pattern,string name)
+        {
+            if (Regex.IsMatch(name, pattern))
             {
                 return "Valid";
             }
