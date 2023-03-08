@@ -51,9 +51,14 @@ namespace RegularExpressionTest
             string pattern = "^[A-Za-z0-9]{1,}(@|#|$|&){1}$";
             return TestPattern(pattern, input);
         }
-        public string TestPattern(string pattern,string name)
+        public string ValidateSampleEmails(string input)
         {
-            if (Regex.IsMatch(name, pattern))
+            string pattern = "^[a-zA-Z]{3}[_,.,+,-]?[a-zA-Z0-9]*@[a-zA-Z0-9]{1,10}.(com|com.au|net|co.in|com.com)$";
+            return TestPattern(pattern, input);
+        }
+        public string TestPattern(string pattern,string input)
+        {
+            if (Regex.IsMatch(input, pattern))
             {
                 return "Valid";
             }

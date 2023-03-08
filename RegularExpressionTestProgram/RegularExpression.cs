@@ -54,5 +54,20 @@ namespace RegularExpressionTestProgram
             string result = regex.ValidatePasswordWithExactlyOneSpecialCharacter("Shivani1@");
             Assert.AreEqual("Valid", result);
         }
+        [Test]
+        public void ShouldReturn_SampleEmails_Valid()
+        {
+            //string result = regex.ValidateSampleEmails("abc.xyz@bridgelabz.co.in");
+            //string result = regex.ValidateSampleEmails("abc@yahoo.com");
+            //string result = regex.ValidateSampleEmails("abc-100@yahoo.com");
+            //string result = regex.ValidateSampleEmails("abc.100@yahoo.com");
+            //string result = regex.ValidateSampleEmails("abc111@abc.com");
+            //string result = regex.ValidateSampleEmails("abc_100@abc.net");
+            //string result = regex.ValidateSampleEmails("abc.100@abc.com.au");
+            //string result = regex.ValidateSampleEmails("abc@1.com");
+            //string result = regex.ValidateSampleEmails("abc@gmail.com.com");
+            string result = regex.ValidateSampleEmails("abc+100@gmail.com");
+            Assert.AreEqual("Valid",result);
+        }
     }
 }
