@@ -95,5 +95,31 @@ namespace RegularExpressionTestProgram
                 Assert.AreEqual("First name should not be empty", exceptionHandling.Message);
             }
         }
+        [Test]
+        public void GivenNullLastName_WhenAnalyse_ShouldReturnCustomException_NullInput()
+        {
+            try
+            {
+                RegexPattern regularExpression = new RegexPattern("null");
+                string result = regularExpression.ValidateLastName();
+            }
+            catch (UserRegExceptionHandling exceptionHandling)
+            {
+                Assert.AreEqual("Last name should not be null", exceptionHandling.Message);
+            }
+        }
+        [Test]
+        public void GivenEmptyLastName_WhenAnalyse_ShouldReturnCustomException_EmptyInput()
+        {
+            try
+            {
+                RegexPattern regularExpression = new RegexPattern(string.Empty);
+                string result = regularExpression.ValidateLastName();
+            }
+            catch (UserRegExceptionHandling exceptionHandling)
+            {
+                Assert.AreEqual("Last name should not be empty", exceptionHandling.Message);
+            }
+        }
     }
 }

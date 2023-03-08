@@ -13,6 +13,7 @@ namespace RegularExpressionTest
     {
         public string inputs;
         public string patternFirstName = "^[A-z]{1}[a-z]{2,}$";
+        public string patternLastName = "^[A-z]{1}[a-z]{2,}$";
         public RegexPattern()
         {
 
@@ -98,6 +99,28 @@ namespace RegularExpressionTest
             catch (NullReferenceException)
             {
                 throw new UserRegExceptionHandling("First name should not be null", UserRegExceptionHandling.ExceptionTypes.NULL_INPUT);
+            }
+        }
+        public string ValidateLastName()
+        {
+            try
+            {
+                if (inputs.Equals(string.Empty))
+                {
+                    throw new UserRegExceptionHandling("Last name should not be empty", UserRegExceptionHandling.ExceptionTypes.EMPTY_INPUT);
+                }
+                else if (Regex.IsMatch(inputs, patternLastName))
+                {
+                    return "Valid";
+                }
+                else
+                {
+                    return "Invalid";
+                }
+            }
+            catch (NullReferenceException)
+            {
+                throw new UserRegExceptionHandling("Last name should not be null", UserRegExceptionHandling.ExceptionTypes.NULL_INPUT);
             }
         }
     }
