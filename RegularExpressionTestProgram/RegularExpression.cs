@@ -100,7 +100,7 @@ namespace RegularExpressionTestProgram
         {
             try
             {
-                RegexPattern regularExpression = new RegexPattern("null");
+                RegexPattern regularExpression = new RegexPattern(null);
                 string result = regularExpression.ValidateLastName();
             }
             catch (UserRegExceptionHandling exceptionHandling)
@@ -119,6 +119,32 @@ namespace RegularExpressionTestProgram
             catch (UserRegExceptionHandling exceptionHandling)
             {
                 Assert.AreEqual("Last name should not be empty", exceptionHandling.Message);
+            }
+        }
+        [Test]
+        public void GivenNullSampleEmails_WhenAnalyse_ShouldReturnCustomException_NullInput()
+        {
+            try
+            {
+                RegexPattern regularExpression = new RegexPattern(null);
+                string result = regularExpression.ValidateSampleEmails();
+            }
+            catch (UserRegExceptionHandling exceptionHandling)
+            {
+                Assert.AreEqual("Emails should not be null", exceptionHandling.Message);
+            }
+        }
+        [Test]
+        public void GivenEmptySampleEmails_WhenAnalyse_ShouldReturnCustomException_EmptyInput()
+        {
+            try
+            {
+                RegexPattern regularExpression = new RegexPattern(string.Empty);
+                string result = regularExpression.ValidateSampleEmails();
+            }
+            catch (UserRegExceptionHandling exceptionHandling)
+            {
+                Assert.AreEqual("Emails should not be empty", exceptionHandling.Message);
             }
         }
     }

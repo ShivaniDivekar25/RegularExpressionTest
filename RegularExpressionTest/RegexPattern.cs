@@ -14,6 +14,7 @@ namespace RegularExpressionTest
         public string inputs;
         public string patternFirstName = "^[A-z]{1}[a-z]{2,}$";
         public string patternLastName = "^[A-z]{1}[a-z]{2,}$";
+        public string patternSampleEmail = "^[a-zA-Z]{3}[_,.,+,-]?[a-zA-Z0-9]*@[a-zA-Z0-9]{1,10}.(com|com.au|net|co.in|com.com)$";
         public RegexPattern()
         {
 
@@ -121,6 +122,29 @@ namespace RegularExpressionTest
             catch (NullReferenceException)
             {
                 throw new UserRegExceptionHandling("Last name should not be null", UserRegExceptionHandling.ExceptionTypes.NULL_INPUT);
+            }
+        }
+        public string ValidateSampleEmails()
+        {
+            try
+            {
+                if (inputs.Equals(string.Empty))
+                {
+                    throw new UserRegExceptionHandling("Emails should not be empty", UserRegExceptionHandling.ExceptionTypes.EMPTY_INPUT);
+                }
+
+                else if (Regex.IsMatch(inputs, patternSampleEmail))
+                {
+                    return "Valid";
+                }
+                else
+                {
+                    return "Invalid";
+                }
+            }
+            catch (NullReferenceException)
+            {
+                throw new UserRegExceptionHandling("Emails should not be null", UserRegExceptionHandling.ExceptionTypes.NULL_INPUT);
             }
         }
     }
