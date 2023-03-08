@@ -69,5 +69,31 @@ namespace RegularExpressionTestProgram
             string result = regex.ValidateSampleEmails("abc+100@gmail.com");
             Assert.AreEqual("Valid",result);
         }
+        [Test]
+        public void GivenNullFirstName_WhenAnalyse_ShouldReturnCustomException_NullInput()
+        {
+            try
+            {
+                RegexPattern regularExpression = new RegexPattern(null);
+                string result = regularExpression.ValidateFirstName();
+            }
+            catch (UserRegExceptionHandling exceptionHandling)
+            {
+                Assert.AreEqual("First name should not be null", exceptionHandling.Message);
+            }
+        }
+        [Test]
+        public void GivenEmptyFirstName_WhenAnalyse_ShouldReturnCustomException_EmptyInput()
+        {
+            try
+            {
+                RegexPattern regularExpression = new RegexPattern(string.Empty);
+                string result = regularExpression.ValidateFirstName();
+            }
+            catch (UserRegExceptionHandling exceptionHandling)
+            {
+                Assert.AreEqual("First name should not be empty", exceptionHandling.Message);
+            }
+        }
     }
 }

@@ -11,6 +11,17 @@ namespace RegularExpressionTest
 {
     public class RegexPattern
     {
+        public string inputs;
+        public string patternFirstName = "^[A-z]{1}[a-z]{2,}$";
+        public RegexPattern()
+        {
+
+        }
+        public RegexPattern(string inputs)
+        {
+            this.inputs = inputs;
+        }
+
         public string ValidateFirstName(string input)
         {
             string pattern = "^[A-z]{1}[a-z]{2,}$";
@@ -65,6 +76,28 @@ namespace RegularExpressionTest
             else
             {
                 return "Invalid";
+            }
+        }
+        public string ValidateFirstName()
+        {
+            try
+            {
+                if (inputs.Equals(string.Empty))
+                {
+                    throw new UserRegExceptionHandling("First name should not be empty", UserRegExceptionHandling.ExceptionTypes.EMPTY_INPUT);
+                }
+                else if (Regex.IsMatch(inputs, patternFirstName))
+                {
+                    return "Valid";
+                }
+                else
+                {
+                    return "Invalid";
+                }
+            }
+            catch (NullReferenceException)
+            {
+                throw new UserRegExceptionHandling("First name should not be null", UserRegExceptionHandling.ExceptionTypes.NULL_INPUT);
             }
         }
     }
