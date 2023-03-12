@@ -11,7 +11,13 @@ namespace RegularExpressionTest
         public enum ExceptionTypes
         {
             NULL_INPUT,
-            EMPTY_INPUT
+            EMPTY_INPUT,
+            INVALID_FIRST_NAME,
+            INVALID_LAST_NAME,
+            INVALID_EMAIL,
+            INVALID_PHONENUMBER,
+            INVALID_PASSWORD,
+            INVALID_SAMPLE_EMAILS
         }
         public ExceptionTypes exceptionTypes;
         public UserRegExceptionHandling(string msg, ExceptionTypes exceptionTypes) : base(msg)

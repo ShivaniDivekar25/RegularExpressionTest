@@ -14,6 +14,9 @@ namespace RegularExpressionTest
         public string inputs;
         public string patternFirstName = "^[A-z]{1}[a-z]{2,}$";
         public string patternLastName = "^[A-z]{1}[a-z]{2,}$";
+        public string patternValidEmail = "^[a-z]{3}.[a-z]{2,}@[a-z]{2}.[a-z]{2}.[a-z]{2}$";
+        public string patternPhoneNumber = "^[0-9]{2}[ ][0-9]{10}$";
+        public string patternPassword = "^[A-Z]{1}[a-z]{4,}(@|#|$|&){1}[0-9]{1,}$";
         public string patternSampleEmail = "^[a-zA-Z]{3}[_,.,+,-]?[a-zA-Z0-9]*@[a-zA-Z0-9]{1,10}.(com|com.au|net|co.in|com.com)$";
         public RegexPattern()
         {
@@ -146,6 +149,80 @@ namespace RegularExpressionTest
             {
                 throw new UserRegExceptionHandling("Emails should not be null", UserRegExceptionHandling.ExceptionTypes.NULL_INPUT);
             }
+        }
+        public bool FirstName(string inputs)
+        {
+            if (Regex.IsMatch(inputs, patternFirstName))
+            {
+                return true;
+            }
+            else
+            {
+                throw new UserRegExceptionHandling("Invalid First Name", UserRegExceptionHandling.ExceptionTypes.INVALID_FIRST_NAME);
+            }
+        }
+        public bool LastName(string inputs)
+        {
+            if (Regex.IsMatch(inputs, patternLastName))
+            {
+                return true;
+            }
+            else
+            {
+                throw new UserRegExceptionHandling("Invalid Last Name", UserRegExceptionHandling.ExceptionTypes.INVALID_LAST_NAME);
+            }
+        }
+        //Created email method
+        public bool ValidEmail(string inputs)
+        {
+            if (Regex.IsMatch(inputs, patternValidEmail))
+            {
+                return true;
+            }
+            else
+            {
+                throw new UserRegExceptionHandling("Invalid Email", UserRegExceptionHandling.ExceptionTypes.INVALID_EMAIL);
+            }
+        }
+        //Created phone number method
+        public bool PhoneNumber(string inputs)
+        {
+            if (Regex.IsMatch(inputs, patternPhoneNumber))
+            {
+                return true;
+            }
+            else
+            {
+                throw new UserRegExceptionHandling("Invalid Phone Number", UserRegExceptionHandling.ExceptionTypes.INVALID_PHONENUMBER);
+            }
+        }
+        //Created password method
+        public bool Password(string inputs)
+        {
+            if (Regex.IsMatch(inputs, patternPassword))
+            {
+                return true;
+            }
+            else
+            {
+                throw new UserRegExceptionHandling("Invalid Password", UserRegExceptionHandling.ExceptionTypes.INVALID_PASSWORD);
+            }
+        }
+        //Created validate Emails method
+        public bool ValidateSampleEmail(string[] input)
+        {
+            foreach(string inputs in input)
+            {
+                if (Regex.IsMatch(inputs, patternSampleEmail))
+                {
+                    return true;
+                }
+                else
+                {
+                    throw new UserRegExceptionHandling("Invalid Sample Emails", UserRegExceptionHandling.ExceptionTypes.INVALID_SAMPLE_EMAILS);
+                }
+            }
+            return default;
         }
     }
 }
